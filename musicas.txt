@@ -1,0 +1,272 @@
+Título;Artista;Gênero;Duração (segundos)
+Aquarela do Brasil;Gal Costa;MPB;205
+Chega de Saudade;João Gilberto;Bossa Nova;178
+Garota de Ipanema;Tom Jobim;Bossa Nova;280
+Travessia;Milton Nascimento;MPB;254
+Como Nossos Pais;Elis Regina;MPB;258
+O Mundo É um Moinho;Cartola;Samba;158
+Pra Não Dizer que Não Falei das Flores;Geraldo Vandré;MPB;231
+Anunciação;Alceu Valença;Forró;187
+Descobridor dos Sete Mares;Tim Maia;Soul/Funk;276
+O Segundo Sol;Cássia Eller;Rock Nacional;264
+Na Rua, Na Chuva, Na Fazenda;Kid Abelha;Pop Rock;236
+Sozinho;Caetano Veloso;MPB;204
+O Mundo É Bão, Sebastião;Nando Reis;Pop Rock;245
+Amado;Vanessa da Mata;Pop;216
+Pra Você Guardei o Amor;Nando Reis;Pop Rock;306
+Esquadros;Adriana Calcanhotto;Pop;166
+Tubarões (Ao Vivo);Diego & Victor Hugo;Sertanejo;198
+P Do Pecado (Ao Vivo);Grupo Menos É Mais, Simone Mendes;Pagode;165
+Sequência Feiticeira;Pedro Sampaio, Mc Gw;Funk;153
+Sua Boca Mente (You're Still The One);Zé Felipe, Ana Castela;Sertanejo;161
+Saudade De Quem Eu Sou (Ao Vivo);Henrique & Juliano;Sertanejo;192
+Ilusão De Ótica (Ao Vivo);Matheus & Kauan, Ana Castela;Sertanejo;185
+Aquele Lugar (Ao Vivo);Grupo Menos É Mais;Pagode;210
+Tarde Demais / Mágica / Oh! Chuva (Ao Vivo);Grupo Menos É Mais;Pagode;301
+Meu Mundo É o Vento;Marisa Monte;MPB;230
+Eu Te Devoro;Djavan;MPB;225
+Ainda É Cedo;Legião Urbana;Rock Nacional;243
+Exagerado;Cazuza;Rock Nacional;238
+Meu Erro;Paralamas do Sucesso;Pop Rock;208
+Anna Júlia;Los Hermanos;Pop Rock;192
+Malandragem;Cássia Eller;Rock Nacional;250
+Vou Deixar;Skank;Pop Rock;270
+Do Seu Lado;Jota Quest;Pop Rock;237
+Mulheres;Martinália;Samba;170
+Deixa a Vida me Levar;Zeca Pagodinho;Samba;248
+Vou Festejar;Beth Carvalho;Samba;201
+Camarão que Dorme a Onda Leva;Zeca Pagodinho;Samba;215
+Tristeza Pé no Chão;Clara Nunes;Samba;230
+Não Deixe o Samba Morrer;Alcione;Samba;255
+Pintura Íntima;Kid Abelha;Pop Rock;220
+Proibida Pra Mim;Charlie Brown Jr.;Rock Nacional;190
+Tropicana;Alceu Valença;Forró;212
+Beijar na Boca;Claudia Leitte;Axé;195
+Evidências;Chitãozinho & Xororó;Sertanejo;283
+Fio de Cabelo;Chitãozinho & Xororó;Sertanejo;197
+A Saudade Mata a Gente;Leo Canhoto & Robertinho;Sertanejo Raiz;185
+Boate Azul;Joaquim & Manuel;Sertanejo;174
+Gostoso Demais;Maria Bethânia;MPB;157
+Deslizes;Fagner;MPB;230
+Coração Bobo;Alceu Valença;Forró;210
+Morena Tropicana;Alceu Valença;Forró;198
+Pátria Amada;Capital Inicial;Rock Nacional;250
+Que País É Este;Legião Urbana;Rock Nacional;207
+O Rock do Governo;Titãs;Rock Nacional;215
+Pra Dizer Adeus;Titãs;Rock Nacional;190
+Tempo Perdido;Legião Urbana;Rock Nacional;305
+Primeiros Erros;Kiko Zambianchi;Pop Rock;250
+Meu Jeito;Ivete Sangalo;Axé;190
+País Tropical;Jorge Ben Jor;MPB/Samba;205
+Mas Que Nada;Jorge Ben Jor;Samba;240
+Pérola Negra;Luiz Melodia;MPB;235
+Flor de Lis;Djavan;MPB;245
+Linha do Equador;Djavan;MPB;260
+Sina;Djavan;MPB;200
+Samurai;Djavan;MPB;270
+Tarde em Itapoã;Toquinho e Vinicius;MPB;205
+Se Todos Fossem Iguais a Você;Tom Jobim;Bossa Nova;200
+Wave;Tom Jobim;Bossa Nova;198
+Corcovado;Tom Jobim;Bossa Nova;210
+Samba de Verão;Marcos Valle;Bossa Nova;170
+Masculino e Feminino;Pepeu Gomes;Rock/MPB;205
+Odeon;Ernesto Nazareth;Instrumental;180
+Tico-Tico no Fubá;Zequinha de Abreu;Choro;175
+Um a Zero;Pixinguinha;Choro;160
+Carinhoso;Pixinguinha;Choro;195
+Brejeiro;Ernesto Nazareth;Choro;170
+Ai, que Saudade D'ocê;Geraldo Azevedo;Forró;175
+Asa Branca;Luiz Gonzaga;Forró;190
+Xote das Meninas;Luiz Gonzaga;Forró;185
+Gatas Extraordinárias;Caetano Veloso;MPB;235
+Baby;Caetano Veloso;MPB;210
+Vaca Profana;Gal Costa;MPB;280
+Meu Bem, Meu Mal;Gal Costa;MPB;210
+Balada do Louco;Os Mutantes;Rock Psicodélico;285
+Panis et Circenses;Os Mutantes;Rock Psicodélico;255
+Andar com Fé;Gilberto Gil;MPB;260
+Aquele Abraço;Gilberto Gil;MPB;275
+Refazenda;Gilberto Gil;MPB;200
+Toda Forma de Amor;Lulu Santos;Pop;210
+Tempos Modernos;Lulu Santos;Pop;225
+Como uma Onda;Lulu Santos;Pop;230
+Adivinha o Quê;Lulu Santos;Pop;200
+Um Certo Alguém;Lulu Santos;Pop;245
+Samba da Bênção;Vinicius de Moraes;Samba;195
+Canto de Ossanha;Baden Powell e Vinicius de Moraes;Samba;205
+Berimbau;Baden Powell e Vinicius de Moraes;Samba;180
+Apelo;Elis Regina;MPB;190
+Madalena;Elis Regina;MPB;210
+Águas de Março;Tom Jobim e Elis Regina;MPB;220
+Saudosa Maloca;Demônios da Garoa;Samba;185
+Trem das Onze;Adoniran Barbosa;Samba;170
+Oceano;Djavan;MPB;248
+Te Devoro;Djavan;MPB;225
+Seduzir;Djavan;MPB;210
+Flor de Lis;Djavan;MPB;245
+A Ilha;Lulu Santos;Pop;230
+Tudo Azul;Lulu Santos;Pop;215
+Assim Caminha a Humanidade;Lulu Santos;Pop;240
+Papo Reto (Prazer é Sexo...);Charlie Brown Jr.;Rock Nacional;220
+Só os Loucos Sabem;Charlie Brown Jr.;Rock Nacional;250
+Dias de Luta, Dias de Glória;Charlie Brown Jr.;Rock Nacional;205
+Um Minuto Para o Fim do Mundo;CPM 22;Rock Nacional;190
+Inverno;CPM 22;Rock Nacional;210
+É Preciso Saber Viver;Titãs;Rock Nacional;185
+Marvin;Titãs;Rock Nacional;240
+Flores;Titãs;Rock Nacional;195
+Pra Você Dar o Nome;5 a Seco;MPB;255
+De Janeiro a Janeiro;Ney Matogrosso;MPB;230
+Codinome Beija-Flor;Cazuza;Rock Nacional;205
+Bete Balanço;Barão Vermelho;Rock Nacional;220
+Por Você;Barão Vermelho;Rock Nacional;250
+Vem Quente Que Eu Estou Fervendo;Erasmo Carlos;Rock Nacional;170
+Meu Esquema;Vange Leonel;Pop;215
+Samba de Uma Nota Só;Tom Jobim;Bossa Nova;105
+Desafinado;João Gilberto;Bossa Nova;180
+Samba do Avião;Tom Jobim;Bossa Nova;200
+Meditacão;Tom Jobim;Bossa Nova;150
+Ligação Urbana;Almir Guineto;Samba;190
+Coração em Desalinho;Seu Jorge;Samba;230
+Eu Bebo Sim;Elis Regina;Samba;155
+Saudosa Maloca;Demônios da Garoa;Samba;185
+Trem das Onze;Adoniran Barbosa;Samba;170
+Gostava Tanto de Você;Tim Maia;Soul/Funk;240
+Não Quero Dinheiro;Tim Maia;Soul/Funk;195
+Dia de Formatura;Tim Maia;Soul/Funk;220
+Primavera;Tim Maia;Soul/Funk;255
+Toda Forma de Amor;Lulu Santos;Pop;210
+Adivinha o Quê;Lulu Santos;Pop;200
+O Som do Mar;Jovem Dionísio;Pop;160
+Acorda Pedrinho;Jovem Dionísio;Pop;160
+Dengo;João Gomes;Forró;168
+Meu Pedaço de Chão;João Gomes;Forró;175
+Morena;João Gomes;Forró;180
+Piseiro Estourado;Os Barões da Pisadinha;Piseiro;155
+Tá Rocheada;Os Barões da Pisadinha;Piseiro;160
+Love Sincero;Os Barões da Pisadinha;Piseiro;170
+Sarrando Na Mesa;Mc Levin;Funk;150
+Bum Bum Tam Tam;MC Fioti;Funk;175
+Eu Não Vou Embora;Anitta;Funk;210
+Paradinha;Anitta;Pop;195
+Downtown;Anitta & J Balvin;Pop;200
+Envolver;Anitta;Pop;193
+Coração Cachorro;Avine Vinny & Matheus Fernandes;Forró;172
+Cabaré;Leonardo;Sertanejo;230
+Desejo de Amar;João Paulo & Daniel;Sertanejo;210
+Pense em Mim;Leandro & Leonardo;Sertanejo;240
+É o Amor;Zezé Di Camargo & Luciano;Sertanejo;250
+Um Sonhador;Dilsinho;Pagode;190
+A Gente Faz a Festa;Exaltasamba;Pagode;220
+Fui Fiel;Gusttavo Lima;Sertanejo;185
+Balada;Gusttavo Lima;Sertanejo;200
+Cem Mil;Gusttavo Lima;Sertanejo;180
+Zé da Recaída;Gusttavo Lima;Sertanejo;190
+Notificação Preferida;Zé Neto & Cristiano;Sertanejo;195
+Largado Às Traças;Zé Neto & Cristiano;Sertanejo;190
+Bebi Liguei;Zé Neto & Cristiano;Sertanejo;185
+Cadeira de Aço;Zé Neto & Cristiano;Sertanejo;170
+Eu Sei De Cor;Marília Mendonça;Sertanejo;190
+Infiel;Marília Mendonça;Sertanejo;185
+De Quem É a Culpa?;Marília Mendonça;Sertanejo;195
+Todo Mundo Vai Sofrer;Marília Mendonça;Sertanejo;190
+Troca de Calçada;Marília Mendonça;Sertanejo;175
+Bloqueado;Gusttavo Lima;Sertanejo;180
+Atrasadinha;Felipe Araújo & Ferrugem;Sertanejo;185
+Regime Fechado;Simone & Simaria;Sertanejo;180
+Chora Me Liga;João Bosco & Vinicius;Sertanejo;195
+Paga Pau;Fernando & Sorocaba;Sertanejo;205
+Borboletas;Victor & Leo;Sertanejo;220
+Quando a Chuva Passar;Ivete Sangalo;Pop;245
+Festa;Ivete Sangalo;Axé;230
+Acelera Aê (Tudo Que Eu Quero);Ivete Sangalo;Axé;220
+Tempo de Alegria;Ivete Sangalo;Axé;210
+Eva;Banda Eva;Axé;250
+Milla;Netinho;Axé;240
+Pequena Eva;Banda Eva;Axé;260
+Liberar Geral;Chiclete com Banana;Axé;230
+Diz Pra Mim;Malta;Rock Nacional;220
+Dia, Lugar e Hora;Luan Santana;Sertanejo;205
+Meteoro;Luan Santana;Sertanejo;210
+Caminhoneiro;Roberto Carlos;MPB;250
+Emoções;Roberto Carlos;MPB;245
+Detalhes;Roberto Carlos;MPB;310
+Como É Grande Meu Amor Por Você;Roberto Carlos;MPB;180
+Jesus Cristo;Roberto Carlos;MPB;200
+Dancing Days;Frenéticas;Disco;215
+Lágrimas e Chuva;Kid Abelha;Pop Rock;240
+Me Chama;Lobão;Rock Nacional;210
+Eu Te Amo;Chico Buarque;MPB;250
+Geni e o Zepelim;Chico Buarque;MPB;430
+Construção;Chico Buarque;MPB;420
+Cálice;Chico Buarque;MPB;300
+A Banda;Chico Buarque;MPB;120
+Olha;Roberto Carlos;MPB;210
+Debaixo dos Caracóis dos Seus Cabelos;Roberto Carlos;MPB;215
+Nossa Canção;Roberto Carlos;MPB;210
+Que Se Chama Amor;Só Pra Contrariar;Pagode;210
+Outdoor;Só Pra Contrariar;Pagode;225
+A Barata;Só Pra Contrariar;Pagode;200
+Final de Semana;Só Pra Contrariar;Pagode;230
+Eu e Ela;Tim Maia;Soul/Funk;245
+Sossego;Tim Maia;Soul/Funk;230
+Você;Tim Maia;Soul/Funk;260
+Telefone;Tim Maia;Soul/Funk;215
+Fogo e Paixão;Wando;Brega;240
+Borbulhas de Amor;Fagner;MPB;260
+Retratos e Canções;Sandra de Sá;Pop;235
+Bye Bye Tristeza;Sandra de Sá;Pop;220
+Epitáfio;Titãs;Rock Nacional;200
+Envelheço na Cidade;Ira!;Rock Nacional;220
+Núcleo Urbano;Ira!;Rock Nacional;205
+Tarde Vazia;Ira!;Rock Nacional;230
+Ciúme;Ultraje a Rigor;Rock Nacional;190
+Eu Gosto de Mulher;Ultraje a Rigor;Rock Nacional;200
+Pelados em Santos;Mamonas Assassinas;Rock Cômico;220
+Vira-Vira;Mamonas Assassinas;Rock Cômico;180
+Robocop Gay;Mamonas Assassinas;Rock Cômico;210
+Vento no Litoral;Legião Urbana;Rock Nacional;305
+Será;Legião Urbana;Rock Nacional;140
+Quase Sem Querer;Legião Urbana;Rock Nacional;260
+Índios;Legião Urbana;Rock Nacional;290
+Eduardo e Mônica;Legião Urbana;Rock Nacional;250
+Pais e Filhos;Legião Urbana;Rock Nacional;300
+Giz;Legião Urbana;Rock Nacional;190
+Perfeição;Legião Urbana;Rock Nacional;250
+Acabou Chorare;Novos Baianos;MPB/Rock;280
+A Menina Dança;Novos Baianos;MPB/Rock;195
+Brasil Pandeiro;Novos Baianos;MPB/Rock;230
+Festa;Novos Baianos;MPB/Rock;200
+O Som;Novos Baianos;MPB/Rock;215
+Paz e Amor;Raul Seixas;Rock Nacional;240
+Gita;Raul Seixas;Rock Nacional;280
+Metamorfose Ambulante;Raul Seixas;Rock Nacional;190
+Maluco Beleza;Raul Seixas;Rock Nacional;205
+Eu Nasci Há Dez Mil Anos Atrás;Raul Seixas;Rock Nacional;240
+Medo da Chuva;Raul Seixas;Rock Nacional;255
+Haja o Que Houver;Karminho;Pop;195
+Você Não Me Ensinou a Te Esquecer;Caetano Veloso;MPB;260
+Leãozinho;Caetano Veloso;MPB;180
+Sampa;Caetano Veloso;MPB;250
+Cálice;Chico Buarque;MPB;300
+Roda Viva;Chico Buarque;MPB;240
+Construção;Chico Buarque;MPB;420
+Olhos nos Olhos;Chico Buarque;MPB;230
+Geni e o Zepelim (Ópera do Malandro);Chico Buarque;MPB;430
+Sinal Fechado;Paulinho da Viola;Samba;170
+Foi Um Rio Que Passou Em Minha Vida;Paulinho da Viola;Samba;200
+Coração Leviano;Paulinho da Viola;Samba;215
+Tudo Se Transformou;Paulinho da Viola;Samba;185
+Argumento;Paulinho da Viola;Samba;190
+Amanhã;Guilherme Arantes;Pop;225
+Cheia de Charme;Guilherme Arantes;Pop;230
+Lindo Balão Azul;Guilherme Arantes;Pop;200
+De Repente Califórnia;Lulu Santos;Pop;215
+Um Dia de Sol;Lulu Santos;Pop;240
+O Último Romântico;Lulu Santos;Pop;220
+Fullgás;Marina Lima;Pop;255
+Pelo Avesso;Marina Lima;Pop;230
+À Francesa;Marina Lima;Pop;215
+Seu Crime;Pabllo Vittar;Pop/Arrasta;190
+K.O.;Pabllo Vittar;Pop/Arrasta;200
+Corpo Sensual;Pabllo Vittar;Pop/Arrasta;215
