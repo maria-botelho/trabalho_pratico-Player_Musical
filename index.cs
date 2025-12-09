@@ -9,13 +9,11 @@ using System.Text;
 // ====================================================================
 public class Musica
 {
-    // Propriedades auto-implementadas
     public string Titulo { get; set; }
     public string Artista { get; set; }
     public string Genero { get; set; }
     public int DuracaoSegundos { get; set; }
 
-    // Construtor parametrizado
     public Musica(string titulo, string artista, string genero, int duracaoSegundos)
     {
         this.Titulo = titulo;
@@ -24,17 +22,14 @@ public class Musica
         this.DuracaoSegundos = duracaoSegundos;
     }
 
-    // Construtor padrão
     public Musica() { }
 
-    // Método para gerar a CHAVE ÚNICA (Título e Artista em minúsculas e sem espaços extras)
     public string GerarChave()
     {
         string chave = $"{this.Titulo.Trim().ToLower()}|{this.Artista.Trim().ToLower()}";
         return chave;
     }
 
-    // Propriedade para formatar a duração em Minutos:Segundos
     public string DuracaoFormatada
     {
         get
@@ -46,11 +41,25 @@ public class Musica
 }
 
 // ====================================================================
-// CLASSE: LEITOR DEDADOS (CARREGAMENTO DO CATÁLOGO O(1))
+// CLASSE: NÓ DA LISTA ENCADEADA (Estrutura Base Manual para Pilha e Fila)
+// ====================================================================
+public class NoMusica
+{
+    public Musica Dados { get; set; }
+    public NoMusica Proximo { get; set; }
+
+    public NoMusica(Musica musica)
+    {
+        Dados = musica;
+        Proximo = null;
+    }
+}
+
+// ====================================================================
+// CLASSE: LEITOR DEDADOS (CARREGAMENTO DO CATÁLOGO O(1) com Dictionary<T>)
 // ====================================================================
 public static class LeitorDeDados
 {
-    // Retorna o catálogo como um Dictionary<string, Musica> para busca O(1) e unicidade
     public static Dictionary<string, Musica> CarregarMusicas(string caminhoArquivo)
     {
         Dictionary<string, Musica> catalogo = new Dictionary<string, Musica>();
@@ -59,7 +68,7 @@ public static class LeitorDeDados
         {
             using (StreamReader arqLeit = new StreamReader(caminhoArquivo, Encoding.UTF8))
             {
-                arqLeit.ReadLine(); // Descarta o cabeçalho
+                arqLeit.ReadLine();
                 string linha;
 
                 while ((linha = arqLeit.ReadLine()) != null)
@@ -81,7 +90,6 @@ public static class LeitorDeDados
 
                             string chaveUnica = novaMusica.GerarChave();
 
-                            // Tenta adicionar ao dicionário (verifica duplicidade O(1))
                             if (!catalogo.ContainsKey(chaveUnica))
                             {
                                 catalogo.Add(chaveUnica, novaMusica);
@@ -109,47 +117,67 @@ public static class LeitorDeDados
 // ====================================================================
 public class HistoricoReproducao
 {
-    private List<Musica> historico = new List<Musica>();
+    private NoMusica topo;
+    private int contagem;
     private const int CAPACIDADE_MAXIMA = 10;
 
-    // Adiciona a música tocada (topo da pilha) e mantém o limite de 10
+    public HistoricoReproducao()
+    {
+        topo = null;
+        contagem = 0;
+    }
+
     public void Adicionar(Musica musica)
     {
-        historico.Insert(0, musica);
+        NoMusica novoNo = new NoMusica(musica);
+        novoNo.Proximo = topo;
+        topo = novoNo;
+        contagem++;
 
-        if (historico.Count > CAPACIDADE_MAXIMA)
+        if (contagem > CAPACIDADE_MAXIMA)
         {
-            historico.RemoveAt(historico.Count - 1);
+            NoMusica atual = topo;
+            for (int i = 0; i < CAPACIDADE_MAXIMA - 1; i++)
+            {
+                if (atual.Proximo == null) break; 
+                atual = atual.Proximo;
+            }
+            atual.Proximo = null; 
+            contagem--;
         }
     }
 
-    // Retorna a música anterior (topo da pilha) e a remove
     public Musica Voltar()
     {
-        if (historico.Count == 0)
+        if (topo == null)
         {
             return null;
         }
 
-        Musica musicaAnterior = historico[0];
-        historico.RemoveAt(0);
+        Musica musicaAnterior = topo.Dados;
+        topo = topo.Proximo;
+        contagem--;
 
         return musicaAnterior;
     }
 
-    public int Contagem => historico.Count;
+    public int Contagem => contagem;
 
     public void ExibirHistorico()
     {
         Console.WriteLine("\n--- Histórico (Máximo 10 Músicas) ---");
-        if (historico.Count == 0)
+        if (topo == null)
         {
             Console.WriteLine("Histórico vazio.");
             return;
         }
-        for (int i = 0; i < historico.Count; i++)
+        NoMusica atual = topo;
+        int i = 1;
+        while (atual != null)
         {
-            Console.WriteLine($"{i + 1}. {historico[i].Titulo} - {historico[i].Artista} ({historico[i].DuracaoFormatada})");
+            Console.WriteLine($"{i}. {atual.Dados.Titulo} - {atual.Dados.Artista} ({atual.Dados.DuracaoFormatada})");
+            atual = atual.Proximo;
+            i++;
         }
     }
 }
@@ -159,43 +187,88 @@ public class HistoricoReproducao
 // ====================================================================
 public class FilaReproducao
 {
-    private List<Musica> fila = new List<Musica>();
+    private NoMusica frente;
+    private NoMusica traseira;
+    private int contagem;
 
-    // Adiciona uma música ao final da fila (Enqueue)
+    public FilaReproducao()
+    {
+        frente = null;
+        traseira = null;
+        contagem = 0;
+    }
+
     public void AdicionarMusica(Musica musica)
     {
-        fila.Add(musica);
+        NoMusica novoNo = new NoMusica(musica);
+
+        if (frente == null)
+        {
+            frente = novoNo;
+            traseira = novoNo;
+        }
+        else
+        {
+            traseira.Proximo = novoNo;
+            traseira = novoNo;
+        }
+        contagem++;
         Console.WriteLine($"\n[INFO] Adicionada à fila: {musica.Titulo}");
     }
 
-    // Remove e retorna a próxima música a ser reproduzida (Dequeue)
     public Musica ProximaMusica()
     {
-        if (fila.Count == 0)
+        if (frente == null)
         {
             return null;
         }
 
-        Musica proxima = fila[0];
-        fila.RemoveAt(0);
+        Musica proxima = frente.Dados;
+        frente = frente.Proximo;
+        contagem--;
+
+        if (frente == null)
+        {
+            traseira = null;
+        }
 
         return proxima;
     }
+    
+    public void InsertInicio(Musica musica)
+    {
+        NoMusica novoNo = new NoMusica(musica);
+        novoNo.Proximo = frente;
+        frente = novoNo;
+        contagem++;
+        if (traseira == null)
+        {
+            traseira = novoNo;
+        }
+    }
 
-    public int Contagem => fila.Count;
-    public List<Musica> FilaInterna => fila;
+    public int Contagem => contagem;
+    
+    public Musica PrimeiraMusica
+    {
+        get { return frente != null ? frente.Dados : null; }
+    }
 
     public void ExibirFila()
     {
         Console.WriteLine("\n--- Fila de Reprodução (Próxima ao Topo) ---");
-        if (fila.Count == 0)
+        if (frente == null)
         {
             Console.WriteLine("Fila vazia.");
             return;
         }
-        for (int i = 0; i < fila.Count; i++)
+        NoMusica atual = frente;
+        int i = 1;
+        while (atual != null)
         {
-            Console.WriteLine($"{i + 1}. {fila[i].Titulo} - {fila[i].Artista} ({fila[i].DuracaoFormatada})");
+            Console.WriteLine($"{i}. {atual.Dados.Titulo} - {atual.Dados.Artista} ({atual.Dados.DuracaoFormatada})");
+            atual = atual.Proximo;
+            i++;
         }
     }
 }
@@ -208,10 +281,8 @@ public class Program
 {
     public static void Main()
     {
-        // ⚠️ ATUALIZE O CAMINHO DO ARQUIVO AQUI:
         string caminhoArquivo = "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho\\ConsoleApp1\\musicas.txt";
 
-        // Inicialização das estruturas principais
         Dictionary<string, Musica> catalogo = LeitorDeDados.CarregarMusicas(caminhoArquivo);
         HistoricoReproducao historico = new HistoricoReproducao();
         FilaReproducao fila = new FilaReproducao();
@@ -223,7 +294,6 @@ public class Program
             return;
         }
 
-        // Simulação de carregamento inicial de músicas na fila
         if (catalogo.Count >= 2)
         {
             fila.AdicionarMusica(catalogo.Values.ElementAt(0));
@@ -232,12 +302,11 @@ public class Program
 
 
         int op;
-        // Menu Principal
         do
         {
             Console.WriteLine("================ MENU REPRODUTOR ================");
             Console.WriteLine($"🎧 Tocando agora: {(musicaAtual != null ? musicaAtual.Titulo : "N/A")}");
-            Console.WriteLine($"▶️ Próxima na Fila: {(fila.Contagem > 0 ? fila.FilaInterna[0].Titulo : "Fila Vazia")}");
+            Console.WriteLine($"▶️ Próxima na Fila: {(fila.Contagem > 0 ? fila.PrimeiraMusica.Titulo : "Fila Vazia")}");
             Console.WriteLine($"◀️ Histórico: {historico.Contagem} músicas | Fila: {fila.Contagem} músicas");
             Console.WriteLine("-------------------------------------------------");
             Console.WriteLine("0 - Sair");
@@ -258,7 +327,6 @@ public class Program
             switch (op)
             {
                 case 1:
-                    // --- Listagem do Catálogo ---
                     Console.WriteLine("\n\n----------------------------- CATÁLOGO DE MÚSICAS ----------------------------");
                     Console.WriteLine($"{"TÍTULO",-35} | {"ARTISTA",-25} | {"GÊNERO",-15} | {"DURAÇÃO"}");
                     Console.WriteLine("--------------------------------------------------------------------------------------------------");
@@ -272,7 +340,6 @@ public class Program
                     break;
 
                 case 2:
-                    // --- Pesquisa O(1) ---
                     string titulo, artista;
                     Console.WriteLine("\n--- Busca O(1) ---");
                     Console.Write("Qual música deseja pesquisar? ");
@@ -293,7 +360,7 @@ public class Program
                     }
                     break;
 
-                case 3: // Controle de Reprodução
+                case 3:
                     Console.WriteLine("\n--- Controle de Reprodução ---");
                     Console.WriteLine("1 - Próxima Música (Play/Skip)");
                     Console.WriteLine("2 - Voltar (Histórico)");
@@ -325,7 +392,7 @@ public class Program
                         {
                             if (musicaAtual != null)
                             {
-                                fila.FilaInterna.Insert(0, musicaAtual);
+                                fila.InsertInicio(musicaAtual);
                             }
                             musicaAtual = anterior;
                             Console.WriteLine($"\n◀️ VOLTANDO: {musicaAtual.Titulo} - {musicaAtual.Artista}");
@@ -337,7 +404,7 @@ public class Program
                     }
                     break;
 
-                case 4: // Gerenciar Fila e Histórico
+                case 4:
                     Console.WriteLine("\n--- Gerenciar Fila e Histórico ---");
                     Console.WriteLine("1 - Ver Fila e Histórico");
                     Console.WriteLine("2 - Inserir Nova Música na Fila (Pesquisa)");
@@ -350,7 +417,7 @@ public class Program
                         fila.ExibirFila();
                         historico.ExibirHistorico();
                     }
-                    else if (gerenciaOp == "2") // ⭐️ NOVO: Inserção a partir do catálogo
+                    else if (gerenciaOp == "2")
                     {
                         Console.Write("Título da música para adicionar: ");
                         string addTitulo = Console.ReadLine();
@@ -374,7 +441,6 @@ public class Program
         } while (op != 0);
     }
 
-    // Função auxiliar para demonstrar a busca O(1)
     public static Musica RealizarBusca(Dictionary<string, Musica> catalogo, string titulo, string artista)
     {
         Musica musicaBusca = new Musica(titulo, artista, "", 0);
@@ -382,13 +448,13 @@ public class Program
 
         if (catalogo.TryGetValue(chaveBusca, out Musica encontrada))
         {
-            Console.WriteLine("\n✅ Música encontrada:");
+            Console.WriteLine("\n Música encontrada:");
             Console.WriteLine($"Título: {encontrada.Titulo} | Artista: {encontrada.Artista} | Gênero: {encontrada.Genero} | Duração: {encontrada.DuracaoFormatada} \n");
             return encontrada;
         }
         else
         {
-            Console.WriteLine($"❌ Não encontrada: {titulo} por {artista}.");
+            Console.WriteLine($" Não encontrada: {titulo} por {artista}.");
             Console.WriteLine("Verifique se a escrita está correta");
             return null;
         }
