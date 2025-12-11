@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -97,3 +98,110 @@ namespace trabalho_pratico
 
 }
 
+=======
+using System;
+
+/// <summary>
+/// Implementação manual de lista duplamente encadeada.
+/// Usada para montar Playlists, permitindo navegar anterior/próximo.
+/// </summary>
+public class ListaDuplamenteEncadeada
+{
+    public NoDuplo Primeiro { get; private set; }
+    public NoDuplo Ultimo { get; private set; }
+    public int Tamanho { get; private set; }
+
+    public ListaDuplamenteEncadeada()
+    {
+        Primeiro = null;
+        Ultimo = null;
+        Tamanho = 0;
+    }
+
+    /// <summary>
+    /// Insere música no final da playlist.
+    /// </summary>
+    public void InserirFim(Musica musica)
+    {
+        NoDuplo novoNo = new NoDuplo(musica);
+
+        if (Primeiro == null)
+        {
+            Primeiro = novoNo;
+            Ultimo = novoNo;
+        }
+        else
+        {
+            Ultimo.Proximo = novoNo;
+            novoNo.Anterior = Ultimo;
+            Ultimo = novoNo;
+        }
+
+        Tamanho++;
+    }
+
+    /// <summary>
+    /// Remove música pelo título + artista.
+    /// </summary>
+    public bool Remover(string titulo, string artista)
+    {
+        NoDuplo atual = Primeiro;
+
+        while (atual != null)
+        {
+            if (atual.Dados.Titulo == titulo && atual.Dados.Artista == artista)
+            {
+                if (atual.Anterior != null)
+                    atual.Anterior.Proximo = atual.Proximo;
+                else
+                    Primeiro = atual.Proximo;
+
+                if (atual.Proximo != null)
+                    atual.Proximo.Anterior = atual.Anterior;
+                else
+                    Ultimo = atual.Anterior;
+
+                Tamanho--;
+                return true;
+            }
+
+            atual = atual.Proximo;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Busca música na playlist.
+    /// </summary>
+    public Musica Buscar(string titulo, string artista)
+    {
+        NoDuplo atual = Primeiro;
+
+        while (atual != null)
+        {
+            if (atual.Dados.Titulo == titulo && atual.Dados.Artista == artista)
+                return atual.Dados;
+
+            atual = atual.Proximo;
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Exibe todas as músicas da playlist.
+    /// </summary>
+    public void Exibir()
+    {
+        NoDuplo atual = Primeiro;
+
+        Console.WriteLine("\n--- PLAYLIST ---");
+        while (atual != null)
+        {
+            Console.WriteLine($"{atual.Dados.Titulo} - {atual.Dados.Artista}");
+            atual = atual.Proximo;
+        }
+    }
+}
+>>>>>>> 35f1d35c7a30c11a60748446dea87d496bfa1ade
