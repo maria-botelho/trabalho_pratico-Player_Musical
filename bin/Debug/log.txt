@@ -1,0 +1,44 @@
+[11/12/2025 12:46:04] Sistema iniciado. Catálogo carregado com 0 músicas.
+[11/12/2025 12:47:16] Sistema iniciado. Catálogo carregado com 0 músicas.
+[11/12/2025 12:48:02] Sistema iniciado. Catálogo carregado com 0 músicas.
+[11/12/2025 12:49:12] Sistema iniciado. Catálogo carregado com 264 músicas.
+[11/12/2025 12:49:31] Sistema iniciado. Catálogo carregado com 0 músicas.
+[11/12/2025 12:50:17] Sistema iniciado. Catálogo carregado com 0 músicas.
+[11/12/2025 12:51:26] Sistema iniciado. Catálogo carregado com 264 músicas.
+[11/12/2025 12:53:54] Sistema iniciado. Catálogo carregado com 264 músicas.
+[11/12/2025 12:54:09] Sistema iniciado. Catálogo carregado com 264 músicas.
+[11/12/2025 12:54:44] Sistema iniciado. Catálogo carregado com 264 músicas.
+[11/12/2025 12:55:00] Sistema iniciado. Catálogo carregado com 264 músicas.
+[11/12/2025 12:55:30] Música adicionada à fila: K.O. - Pabllo Vittar
+[11/12/2025 12:56:28] Nova música adicionada ao catálogo: dama do baralho - diego e vitor hugo
+[11/12/2025 12:56:55] Música removida do catálogo: dama do baralho - diego e vitor hugo
+[11/12/2025 12:57:46] Playlist criada: teste
+[11/12/2025 12:58:13] Música adicionada à playlist 'teste': K.O. - Pabllo Vittar
+[11/12/2025 12:58:31] Música adicionada à playlist 'teste': Eu e Ela - Tim Maia
+[11/12/2025 12:59:58] Playlist 'teste' (2 músicas) enviada para a fila de reprodução.
+[11/12/2025 13:09:31] Sistema iniciado. Catálogo carregado com 263 músicas.
+[11/12/2025 13:09:40] Playlist criada: teste
+[11/12/2025 13:09:57] Música adicionada à playlist 'teste': K.O. - Pabllo Vittar
+[11/12/2025 13:10:06] Música adicionada à playlist 'teste': Eu e Ela - Tim Maia
+[11/12/2025 13:10:18] Música removida da playlist 'teste': eu e ela - tim maia
+[11/12/2025 13:10:23] Playlist 'teste' (1 músicas) enviada para a fila de reprodução.
+[11/12/2025 13:10:56] Música tocada: K.O. - Pabllo Vittar
+[11/12/2025 13:12:14] Busca por Gênero: pop
+[11/12/2025 13:14:01] Sistema iniciado. Catálogo carregado com 263 músicas.
+[11/12/2025 13:14:18] Busca por Gênero: pop
+[11/12/2025 13:17:37] Sistema iniciado. Catálogo carregado com 263 músicas.
+[11/12/2025 13:17:40] Busca por Gênero: pop
+[11/12/2025 13:18:39] Sistema iniciado. Catálogo carregado com 263 músicas.
+[11/12/2025 13:18:41] Busca por Gênero: pop
+[11/12/2025 13:18:47] Todas as 29 músicas de pop adicionadas à Fila.
+[11/12/2025 13:19:10] Música tocada: À Francesa - Marina Lima
+[11/12/2025 13:19:13] Música tocada: A Ilha - Lulu Santos
+[11/12/2025 13:19:47] Música tocada: Acorda Pedrinho - Jovem Dionísio
+[11/12/2025 13:20:25] Música voltou (Histórico -> Fila): A Ilha
+[11/12/2025 13:20:44] Música voltou (Histórico -> Fila): À Francesa
+[11/12/2025 13:20:59] Música tocada: A Ilha - Lulu Santos
+[11/12/2025 13:21:01] Música tocada: Acorda Pedrinho - Jovem Dionísio
+[11/12/2025 13:21:02] Música tocada: Adivinha o Quê - Lulu Santos
+[11/12/2025 13:21:03] Música tocada: Amado - Vanessa da Mata
+[11/12/2025 13:21:04] Música tocada: Amanhã - Guilherme Arantes
+[11/12/2025 13:21:13] Música tocada: Assim Caminha a Humanidade - Lulu Santos

@@ -1,0 +1,8 @@
+C:\Users\maria\OneDrive\Documentos\Duda PUC\AED\trabalho-pratico\bin\Debug\trabalho-pratico.exe.config
+C:\Users\maria\OneDrive\Documentos\Duda PUC\AED\trabalho-pratico\bin\Debug\trabalho-pratico.exe
+C:\Users\maria\OneDrive\Documentos\Duda PUC\AED\trabalho-pratico\bin\Debug\trabalho-pratico.pdb
+C:\Users\maria\OneDrive\Documentos\Duda PUC\AED\trabalho-pratico\obj\Debug\trabalho-pratico.csproj.AssemblyReference.cache
+C:\Users\maria\OneDrive\Documentos\Duda PUC\AED\trabalho-pratico\obj\Debug\trabalho-pratico.csproj.CoreCompileInputs.cache
+C:\Users\maria\OneDrive\Documentos\Duda PUC\AED\trabalho-pratico\obj\Debug\trabalho-pratico.exe
+C:\Users\maria\OneDrive\Documentos\Duda PUC\AED\trabalho-pratico\obj\Debug\trabalho-pratico.pdb
+C:\Users\maria\OneDrive\Documentos\Duda PUC\AED\trabalho-pratico\obj\Debug\trabalho-pratico.exe.config

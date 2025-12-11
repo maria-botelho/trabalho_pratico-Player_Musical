@@ -2,395 +2,645 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
+using trabalho_pratico;
 
-// ====================================================================
-// CLASSE: MUSICA (MODELO DE DADOS)
-// ====================================================================
-public class Musica
+public class Program
 {
-    // Propriedades auto-implementadas
-    public string Titulo { get; set; }
-    public string Artista { get; set; }
-    public string Genero { get; set; }
-    public int DuracaoSegundos { get; set; }
+    private static Dictionary<string, Musica> catalogo;
+    private static ArvoreGenero indiceGeneros;
+    private static FilaReproducao fila;
+    private static HistoricoReproducao historico;
+    private static Musica musicaAtual;
+    private static List<Playlist> playlists;
+    private const string CAMINHO_MUSICAS = "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\musicas.txt";
 
-    // Construtor parametrizado
-    public Musica(string titulo, string artista, string genero, int duracaoSegundos)
+    public static void Main()
     {
-        this.Titulo = titulo;
-        this.Artista = artista;
-        this.Genero = genero;
-        this.DuracaoSegundos = duracaoSegundos;
-    }
+        InicializarSistema();
 
-    // Construtor padrão
-    public Musica() { }
-
-    // Método para gerar a CHAVE ÚNICA (Título e Artista em minúsculas e sem espaços extras)
-    public string GerarChave()
-    {
-        string chave = $"{this.Titulo.Trim().ToLower()}|{this.Artista.Trim().ToLower()}";
-        return chave;
-    }
-
-    // Propriedade para formatar a duração em Minutos:Segundos
-    public string DuracaoFormatada
-    {
-        get
+        int opcao;
+        do
         {
-            TimeSpan tempo = TimeSpan.FromSeconds(DuracaoSegundos);
-            return $"{(int)tempo.TotalMinutes}:{tempo.Seconds:D2}";
-        }
-    }
-}
+            ExibirCabecalho();
 
-// ====================================================================
-// CLASSE: LEITOR DEDADOS (CARREGAMENTO DO CATÁLOGO O(1))
-// ====================================================================
-public static class LeitorDeDados
-{
-    // Retorna o catálogo como um Dictionary<string, Musica> para busca O(1) e unicidade
-    public static Dictionary<string, Musica> CarregarMusicas(string caminhoArquivo)
-    {
-        Dictionary<string, Musica> catalogo = new Dictionary<string, Musica>();
+            Console.WriteLine("=============== MENU PRINCIPAL ===============");
+            Console.WriteLine("0 - Sair");
+            Console.WriteLine("1 - Gerenciar Catálogo");
+            Console.WriteLine("2 - Gerenciar Playlists");
+            Console.WriteLine("3 - Reprodução (Fila / Histórico)");
+            Console.WriteLine("4 - Buscas por Gênero");
+            Console.WriteLine("==============================================");
+            Console.Write("\nEscolha uma opção: ");
 
-        try
-        {
-            using (StreamReader arqLeit = new StreamReader(caminhoArquivo, Encoding.UTF8))
+            if (!int.TryParse(Console.ReadLine(), out opcao))
+                opcao = -1;
+
+            Console.Clear();
+
+            switch (opcao)
             {
-                arqLeit.ReadLine(); // Descarta o cabeçalho
-                string linha;
+                case 1:
+                    MenuCatalogo();
+                    break;
+                case 2:
+                    MenuPlaylists();
+                    break;
+                case 3:
+                    MenuReproducao();
+                    break;
+                case 4:
+                    MenuBuscaPorGenero();
+                    break;
+            }
 
-                while ((linha = arqLeit.ReadLine()) != null)
+        } while (opcao != 0);
+
+        Logger.Registrar("Sistema encerrado.");
+        Console.WriteLine("Encerrando o Player Musical...");
+    }
+
+    private static void InicializarSistema()
+    {
+        Console.WriteLine("Inicializando sistema...");
+
+        catalogo = LeitorDeDados.CarregarMusicas(CAMINHO_MUSICAS);
+        fila = new FilaReproducao();
+        historico = new HistoricoReproducao();
+        playlists = new List<Playlist>();
+        musicaAtual = null;
+
+        indiceGeneros = new ArvoreGenero();
+
+        foreach (var musica in catalogo.Values)
+        {
+            indiceGeneros.Inserir(musica);
+        }
+
+        Logger.Registrar("Sistema iniciado. Catálogo carregado com " + catalogo.Count + " músicas.");
+        Console.Clear();
+    }
+
+    private static void ExibirCabecalho()
+    {
+        Console.WriteLine("=========== PLAYER MUSICAL ===========");
+        Console.WriteLine($"Tocando agora: {(musicaAtual != null ? musicaAtual.Titulo + " - " + musicaAtual.Artista : "Nenhuma música tocando")}");
+        Console.WriteLine($"Próxima na fila: {(fila.Contagem > 0 && fila.PrimeiraMusica != null ? fila.PrimeiraMusica.Titulo : "Nenhuma (fila vazia)")}");
+        Console.WriteLine($"Histórico: {historico.Contagem} músicas | Fila: {fila.Contagem} músicas | Playlists: {playlists.Count}");
+        Console.WriteLine("================================================\n");
+    }
+
+    private static void MenuCatalogo()
+    {
+        int opcao;
+        do
+        {
+            Console.Clear();
+            ExibirCabecalho();
+
+            Console.WriteLine("----------- GERENCIAR CATÁLOGO -----------");
+            Console.WriteLine("0 - Voltar");
+            Console.WriteLine("1 - Listar todo o catálogo");
+            Console.WriteLine("2 - Buscar música (Título + Artista)");
+            Console.WriteLine("3 - Adicionar nova música ao catálogo");
+            Console.WriteLine("4 - Remover música do catálogo");
+            Console.WriteLine("------------------------------------------");
+            Console.Write("\nEscolha uma opção: ");
+
+            if (!int.TryParse(Console.ReadLine(), out opcao))
+                opcao = -1;
+
+            Console.Clear();
+            ExibirCabecalho();
+
+            switch (opcao)
+            {
+                case 1:
+                    ListarCatalogo();
+                    Pausa();
+                    break;
+
+                case 2:
+                    BuscarMusicaCatalogo();
+                    Pausa();
+                    break;
+
+                case 3:
+                    AdicionarNovaMusica();
+                    Pausa();
+                    break;
+
+                case 4:
+                    RemoverMusicaCatalogo();
+                    Pausa();
+                    break;
+            }
+
+        } while (opcao != 0);
+    }
+
+    private static void ListarCatalogo()
+    {
+        Console.WriteLine("\n----------------------------- CATÁLOGO COMPLETO -----------------------------");
+        Console.WriteLine($"{"TÍTULO",-35} | {"ARTISTA",-25} | {"GÊNERO",-15} | {"DURAÇÃO"}");
+        Console.WriteLine("----------------------------------------------------------------------------");
+
+        foreach (var musica in catalogo.Values)
+        {
+            Console.WriteLine($"{musica.Titulo,-35} | {musica.Artista,-25} | {musica.Genero,-15} | {musica.DuracaoFormatada}");
+        }
+
+        Console.WriteLine("----------------------------------------------------------------------------");
+        Console.WriteLine($"Total de músicas: {catalogo.Count}");
+    }
+
+    private static Musica RealizarBusca(Dictionary<string, Musica> dict, string titulo, string artista)
+    {
+        string chave = $"{titulo.Trim().ToLower()}|{artista.Trim().ToLower()}";
+
+        if (dict.TryGetValue(chave, out Musica encontrada))
+        {
+            Console.WriteLine("\n--- MÚSICA ENCONTRADA ---");
+            Console.WriteLine($"Título: {encontrada.Titulo}");
+            Console.WriteLine($"Artista: {encontrada.Artista}");
+            Console.WriteLine($"Gênero: {encontrada.Genero}");
+            Console.WriteLine($"Duração: {encontrada.DuracaoFormatada}");
+            Console.WriteLine("--------------------------");
+            return encontrada;
+        }
+
+        Console.WriteLine("\nMúsica não encontrada no catálogo.");
+        return null;
+    }
+
+    private static void BuscarMusicaCatalogo()
+    {
+        Console.WriteLine("--- Busca O(1) no Catálogo ---");
+        Console.Write("Título da música: ");
+        string titulo = Console.ReadLine();
+        Console.Write("Artista: ");
+        string artista = Console.ReadLine();
+
+        Musica encontrada = RealizarBusca(catalogo, titulo, artista);
+
+        if (encontrada != null)
+        {
+            Console.WriteLine("\nO que deseja fazer com esta música?");
+            Console.WriteLine("1 - Adicionar à Fila");
+            Console.WriteLine("2 - Adicionar a uma Playlist");
+            Console.WriteLine("0 - Nada");
+            Console.Write("\nEscolha: ");
+
+            string escolha = Console.ReadLine();
+
+            if (escolha == "1")
+            {
+                fila.AdicionarMusica(encontrada);
+                Logger.Registrar($"Música adicionada à fila: {encontrada.Titulo} - {encontrada.Artista}");
+            }
+            else if (escolha == "2")
+            {
+                if (playlists.Count == 0)
                 {
-                    if (string.IsNullOrWhiteSpace(linha)) continue;
-
-                    string[] campos = linha.Split(';');
-
-                    if (campos.Length == 4)
+                    Console.WriteLine("Nenhuma playlist criada ainda.");
+                }
+                else
+                {
+                    ExibirPlaylistsSimples();
+                    Console.Write("\nDigite o número da playlist: ");
+                    if (int.TryParse(Console.ReadLine(), out int idx) &&
+                        idx >= 1 && idx <= playlists.Count)
                     {
-                        if (int.TryParse(campos[3].Trim(), out int duracaoSegundos))
-                        {
-                            Musica novaMusica = new Musica(
-                                titulo: campos[0].Trim(),
-                                artista: campos[1].Trim(),
-                                genero: campos[2].Trim(),
-                                duracaoSegundos: duracaoSegundos
-                            );
-
-                            string chaveUnica = novaMusica.GerarChave();
-
-                            // Tenta adicionar ao dicionário (verifica duplicidade O(1))
-                            if (!catalogo.ContainsKey(chaveUnica))
-                            {
-                                catalogo.Add(chaveUnica, novaMusica);
-                            }
-                            else
-                            {
-                                Console.WriteLine($"\n[AVISO] Música duplicada ignorada: {novaMusica.Titulo} - {novaMusica.Artista}");
-                            }
-                        }
+                        playlists[idx - 1].AdicionarMusica(encontrada);
+                        Logger.Registrar($"Música adicionada à playlist '{playlists[idx - 1].Nome}': {encontrada.Titulo} - {encontrada.Artista}");
+                        Console.WriteLine("Música adicionada na playlist.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Playlist inválida.");
                     }
                 }
             }
         }
+    }
+
+    private static void AdicionarNovaMusica()
+    {
+        Console.WriteLine("--- Adicionar Nova Música ao Catálogo ---");
+
+        Console.Write("Título: ");
+        string titulo = Console.ReadLine();
+
+        Console.Write("Artista: ");
+        string artista = Console.ReadLine();
+
+        Console.Write("Gênero: ");
+        string genero = Console.ReadLine();
+
+        Console.Write("Duração (em segundos): ");
+        if (!int.TryParse(Console.ReadLine(), out int duracao))
+        {
+            Console.WriteLine("Duração inválida. Operação cancelada.");
+            return;
+        }
+
+        Musica nova = new Musica(titulo, artista, genero, duracao);
+        string chave = nova.GerarChave();
+
+        if (catalogo.ContainsKey(chave))
+        {
+            Console.WriteLine("Já existe uma música com esse título e artista no catálogo.");
+            return;
+        }
+
+        catalogo.Add(chave, nova);
+        indiceGeneros.Inserir(nova);
+
+        try
+        {
+            using (StreamWriter sw = new StreamWriter(CAMINHO_MUSICAS, true))
+            {
+                sw.WriteLine($"{nova.Titulo};{nova.Artista};{nova.Genero};{nova.DuracaoSegundos}");
+            }
+            Console.WriteLine("Música adicionada ao catálogo e registrada no arquivo.");
+            Logger.Registrar($"Nova música adicionada ao catálogo: {nova.Titulo} - {nova.Artista}");
+        }
         catch (Exception e)
         {
-            Console.WriteLine($"\nOcorreu um erro ao processar o arquivo: {e.Message}");
-        }
-
-        return catalogo;
-    }
-}
-
-// ====================================================================
-// CLASSE: HISTORICOREPRODUCAO (PILHA/STACK - LIFO MANUAL)
-// ====================================================================
-public class HistoricoReproducao
-{
-    private List<Musica> historico = new List<Musica>();
-    private const int CAPACIDADE_MAXIMA = 10;
-
-    // Adiciona a música tocada (topo da pilha) e mantém o limite de 10
-    public void Adicionar(Musica musica)
-    {
-        historico.Insert(0, musica);
-
-        if (historico.Count > CAPACIDADE_MAXIMA)
-        {
-            historico.RemoveAt(historico.Count - 1);
+            Console.WriteLine("Falha ao escrever no arquivo de músicas: " + e.Message);
         }
     }
 
-    // Retorna a música anterior (topo da pilha) e a remove
-    public Musica Voltar()
+    private static void RemoverMusicaCatalogo()
     {
-        if (historico.Count == 0)
+        Console.WriteLine("--- Remover Música do Catálogo ---");
+
+        Console.Write("Título: ");
+        string titulo = Console.ReadLine();
+
+        Console.Write("Artista: ");
+        string artista = Console.ReadLine();
+
+        Musica musica = RealizarBusca(catalogo, titulo, artista);
+
+        if (musica == null)
         {
-            return null;
-        }
-
-        Musica musicaAnterior = historico[0];
-        historico.RemoveAt(0);
-
-        return musicaAnterior;
-    }
-
-    public int Contagem => historico.Count;
-
-    public void ExibirHistorico()
-    {
-        Console.WriteLine("\n--- Histórico (Máximo 10 Músicas) ---");
-        if (historico.Count == 0)
-        {
-            Console.WriteLine("Histórico vazio.");
-            return;
-        }
-        for (int i = 0; i < historico.Count; i++)
-        {
-            Console.WriteLine($"{i + 1}. {historico[i].Titulo} - {historico[i].Artista} ({historico[i].DuracaoFormatada})");
-        }
-    }
-}
-
-// ====================================================================
-// CLASSE: FILAREPRODUCAO (QUEUE/FILA - FIFO MANUAL)
-// ====================================================================
-public class FilaReproducao
-{
-    private List<Musica> fila = new List<Musica>();
-
-    // Adiciona uma música ao final da fila (Enqueue)
-    public void AdicionarMusica(Musica musica)
-    {
-        fila.Add(musica);
-        Console.WriteLine($"\n[INFO] Adicionada à fila: {musica.Titulo}");
-    }
-
-    // Remove e retorna a próxima música a ser reproduzida (Dequeue)
-    public Musica ProximaMusica()
-    {
-        if (fila.Count == 0)
-        {
-            return null;
-        }
-
-        Musica proxima = fila[0];
-        fila.RemoveAt(0);
-
-        return proxima;
-    }
-
-    public int Contagem => fila.Count;
-    public List<Musica> FilaInterna => fila;
-
-    public void ExibirFila()
-    {
-        Console.WriteLine("\n--- Fila de Reprodução (Próxima ao Topo) ---");
-        if (fila.Count == 0)
-        {
-            Console.WriteLine("Fila vazia.");
-            return;
-        }
-        for (int i = 0; i < fila.Count; i++)
-        {
-            Console.WriteLine($"{i + 1}. {fila[i].Titulo} - {fila[i].Artista} ({fila[i].DuracaoFormatada})");
-        }
-    }
-}
-
-
-// ====================================================================
-// CLASSE PRINCIPAL: PROGRAM
-// ====================================================================
-public class Program
-{
-    public static void Main()
-    {
-        // ⚠️ ATUALIZE O CAMINHO DO ARQUIVO AQUI:
-        string caminhoArquivo = "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho\\ConsoleApp1\\musicas.txt";
-
-        // Inicialização das estruturas principais
-        Dictionary<string, Musica> catalogo = LeitorDeDados.CarregarMusicas(caminhoArquivo);
-        HistoricoReproducao historico = new HistoricoReproducao();
-        FilaReproducao fila = new FilaReproducao();
-        Musica musicaAtual = null;
-
-        if (catalogo.Count == 0)
-        {
-            Console.WriteLine("Catálogo não carregado. Encerrando.");
+            Console.WriteLine("Música não encontrada, nada a remover.");
             return;
         }
 
-        // Simulação de carregamento inicial de músicas na fila
-        if (catalogo.Count >= 2)
+        string chave = musica.GerarChave();
+        bool removida = catalogo.Remove(chave);
+
+        if (removida)
         {
-            fila.AdicionarMusica(catalogo.Values.ElementAt(0));
-            fila.AdicionarMusica(catalogo.Values.ElementAt(1));
+            Console.WriteLine("Música removida do catálogo em memória.");
+            Logger.Registrar($"Música removida do catálogo: {musica.Titulo} - {musica.Artista}");
         }
+    }
 
-
-        int op;
-        // Menu Principal
+    private static void MenuPlaylists()
+    {
+        int opcao;
         do
         {
-            Console.WriteLine("================ MENU REPRODUTOR ================");
-            Console.WriteLine($"🎧 Tocando agora: {(musicaAtual != null ? musicaAtual.Titulo : "N/A")}");
-            Console.WriteLine($"▶️ Próxima na Fila: {(fila.Contagem > 0 ? fila.FilaInterna[0].Titulo : "Fila Vazia")}");
-            Console.WriteLine($"◀️ Histórico: {historico.Contagem} músicas | Fila: {fila.Contagem} músicas");
-            Console.WriteLine("-------------------------------------------------");
-            Console.WriteLine("0 - Sair");
-            Console.WriteLine("1 - Listar Catálogo Completo");
-            Console.WriteLine("2 - Pesquisar Música (Busca O(1))");
-            Console.WriteLine("3 - Controle de Reprodução (Próxima/Voltar)");
-            Console.WriteLine("4 - Gerenciar Fila e Histórico");
-            Console.WriteLine("-------------------------------------------------");
+            Console.Clear();
+            ExibirCabecalho();
+
+            Console.WriteLine("------------- GERENCIAR PLAYLISTS -------------");
+            Console.WriteLine("0 - Voltar");
+            Console.WriteLine("1 - Criar nova playlist");
+            Console.WriteLine("2 - Listar playlists");
+            Console.WriteLine("3 - Gerenciar uma playlist");
+            Console.WriteLine("----------------------------------------------");
             Console.Write("\nEscolha uma opção: ");
 
-            if (!int.TryParse(Console.ReadLine(), out op))
-            {
-                op = -1;
-            }
+            if (!int.TryParse(Console.ReadLine(), out opcao))
+                opcao = -1;
 
             Console.Clear();
+            ExibirCabecalho();
 
-            switch (op)
+            switch (opcao)
             {
                 case 1:
-                    // --- Listagem do Catálogo ---
-                    Console.WriteLine("\n\n----------------------------- CATÁLOGO DE MÚSICAS ----------------------------");
-                    Console.WriteLine($"{"TÍTULO",-35} | {"ARTISTA",-25} | {"GÊNERO",-15} | {"DURAÇÃO"}");
-                    Console.WriteLine("--------------------------------------------------------------------------------------------------");
-
-                    foreach (var musica in catalogo.Values)
-                    {
-                        Console.WriteLine($"{musica.Titulo,-35} | {musica.Artista,-25} | {musica.Genero,-15} | {musica.DuracaoFormatada,-7}");
-                    }
-                    Console.WriteLine("--------------------------------------------------------------------------------------------------");
-                    Console.WriteLine($"Total de músicas únicas carregadas: {catalogo.Count}");
+                    CriarPlaylist();
+                    Pausa();
                     break;
 
                 case 2:
-                    // --- Pesquisa O(1) ---
-                    string titulo, artista;
-                    Console.WriteLine("\n--- Busca O(1) ---");
-                    Console.Write("Qual música deseja pesquisar? ");
-                    titulo = Console.ReadLine();
-                    Console.Write("De qual artista? ");
-                    artista = Console.ReadLine();
-
-                    Musica musicaBuscada = RealizarBusca(catalogo, titulo, artista);
-
-                    if (musicaBuscada != null)
-                    {
-                        Console.WriteLine("\nO que deseja fazer com esta música?");
-                        Console.WriteLine("1 - Adicionar à Fila | 2 - Cancelar");
-                        if (Console.ReadLine() == "1")
-                        {
-                            fila.AdicionarMusica(musicaBuscada);
-                        }
-                    }
+                    ListarPlaylistsDetalhes();
+                    Pausa();
                     break;
 
-                case 3: // Controle de Reprodução
-                    Console.WriteLine("\n--- Controle de Reprodução ---");
-                    Console.WriteLine("1 - Próxima Música (Play/Skip)");
-                    Console.WriteLine("2 - Voltar (Histórico)");
-                    Console.Write("\nEscolha: ");
-
-                    string controleOp = Console.ReadLine();
-
-                    if (controleOp == "1")
-                    {
-                        Musica proxima = fila.ProximaMusica();
-                        if (proxima != null)
-                        {
-                            if (musicaAtual != null)
-                            {
-                                historico.Adicionar(musicaAtual);
-                            }
-                            musicaAtual = proxima;
-                            Console.WriteLine($"\n▶️ TOCANDO: {musicaAtual.Titulo} - {musicaAtual.Artista}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("\nFila de reprodução vazia. Nada para tocar.");
-                        }
-                    }
-                    else if (controleOp == "2")
-                    {
-                        Musica anterior = historico.Voltar();
-                        if (anterior != null)
-                        {
-                            if (musicaAtual != null)
-                            {
-                                fila.FilaInterna.Insert(0, musicaAtual);
-                            }
-                            musicaAtual = anterior;
-                            Console.WriteLine($"\n◀️ VOLTANDO: {musicaAtual.Titulo} - {musicaAtual.Artista}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("\nHistórico de reprodução vazio. Não há como voltar.");
-                        }
-                    }
-                    break;
-
-                case 4: // Gerenciar Fila e Histórico
-                    Console.WriteLine("\n--- Gerenciar Fila e Histórico ---");
-                    Console.WriteLine("1 - Ver Fila e Histórico");
-                    Console.WriteLine("2 - Inserir Nova Música na Fila (Pesquisa)");
-                    Console.Write("\nEscolha: ");
-
-                    string gerenciaOp = Console.ReadLine();
-
-                    if (gerenciaOp == "1")
-                    {
-                        fila.ExibirFila();
-                        historico.ExibirHistorico();
-                    }
-                    else if (gerenciaOp == "2") // ⭐️ NOVO: Inserção a partir do catálogo
-                    {
-                        Console.Write("Título da música para adicionar: ");
-                        string addTitulo = Console.ReadLine();
-                        Console.Write("Artista da música para adicionar: ");
-                        string addArtista = Console.ReadLine();
-
-                        Musica musicaParaAdd = RealizarBusca(catalogo, addTitulo, addArtista);
-
-                        if (musicaParaAdd != null)
-                        {
-                            fila.AdicionarMusica(musicaParaAdd);
-                        }
-                    }
+                case 3:
+                    GerenciarPlaylist();
                     break;
             }
 
-            Console.WriteLine("\n\nClique ENTER para continuar...");
-            Console.ReadLine();
-            Console.Clear();
-
-        } while (op != 0);
+        } while (opcao != 0);
     }
 
-    // Função auxiliar para demonstrar a busca O(1)
-    public static Musica RealizarBusca(Dictionary<string, Musica> catalogo, string titulo, string artista)
+    private static void CriarPlaylist()
     {
-        Musica musicaBusca = new Musica(titulo, artista, "", 0);
-        string chaveBusca = musicaBusca.GerarChave();
+        Console.Write("Nome da nova playlist: ");
+        string nome = Console.ReadLine();
 
-        if (catalogo.TryGetValue(chaveBusca, out Musica encontrada))
+        if (string.IsNullOrWhiteSpace(nome))
         {
-            Console.WriteLine("\n✅ Música encontrada:");
-            Console.WriteLine($"Título: {encontrada.Titulo} | Artista: {encontrada.Artista} | Gênero: {encontrada.Genero} | Duração: {encontrada.DuracaoFormatada} \n");
-            return encontrada;
+            Console.WriteLine("Nome inválido.");
+            return;
+        }
+
+        Playlist p = new Playlist(nome);
+        playlists.Add(p);
+
+        Logger.Registrar($"Playlist criada: {nome}");
+        Console.WriteLine("Playlist criada com sucesso.");
+    }
+
+    private static void ListarPlaylistsDetalhes()
+    {
+        if (playlists.Count == 0)
+        {
+            Console.WriteLine("Nenhuma playlist criada.");
+            return;
+        }
+
+        Console.WriteLine("--- Playlists ---");
+        for (int i = 0; i < playlists.Count; i++)
+        {
+            Console.WriteLine($"{i + 1} - {playlists[i].Nome} (Músicas: {playlists[i].Musicas.Tamanho})");
+        }
+    }
+
+    private static void ExibirPlaylistsSimples()
+    {
+        Console.WriteLine("\nPlaylists disponíveis:");
+        for (int i = 0; i < playlists.Count; i++)
+        {
+            Console.WriteLine($"{i + 1} - {playlists[i].Nome}");
+        }
+    }
+
+    private static void GerenciarPlaylist()
+    {
+        if (playlists.Count == 0)
+        {
+            Console.WriteLine("Nenhuma playlist criada.");
+            Pausa();
+            return;
+        }
+
+        ExibirPlaylistsSimples();
+        Console.Write("\nDigite o número da playlist: ");
+
+        if (int.TryParse(Console.ReadLine(), out int idx) &&
+            idx >= 1 && idx <= playlists.Count)
+        {
+            Playlist selecionada = playlists[idx - 1];
+            MenuPlaylistIndividual(selecionada);
         }
         else
         {
-            Console.WriteLine($"❌ Não encontrada: {titulo} por {artista}.");
-            Console.WriteLine("Verifique se a escrita está correta");
-            return null;
+            Console.WriteLine("Playlist inválida.");
+            Pausa();
         }
+    }
+
+    private static void MenuPlaylistIndividual(Playlist playlist)
+    {
+        int opcao;
+        do
+        {
+            Console.Clear();
+            ExibirCabecalho();
+
+            Console.WriteLine($"------ PLAYLIST: {playlist.Nome} ------");
+            Console.WriteLine("0 - Voltar");
+            Console.WriteLine("1 - Exibir músicas");
+            Console.WriteLine("2 - Adicionar música do catálogo");
+            Console.WriteLine("3 - Remover música da playlist");
+            Console.WriteLine("4 - Enviar playlist para fila de reprodução");
+            Console.WriteLine("----------------------------------------");
+            Console.Write("\nEscolha uma opção: ");
+
+            if (!int.TryParse(Console.ReadLine(), out opcao))
+                opcao = -1;
+
+            Console.Clear();
+            ExibirCabecalho();
+
+            switch (opcao)
+            {
+                case 1:
+                    playlist.ExibirPlaylist();
+                    Pausa();
+                    break;
+
+                case 2:
+                    AdicionarMusicaPlaylist(playlist);
+                    Pausa();
+                    break;
+
+                case 3:
+                    RemoverMusicaPlaylist(playlist);
+                    Pausa();
+                    break;
+
+                case 4:
+                    EnviarPlaylistParaFila(playlist);
+                    Pausa();
+                    break;
+            }
+
+        } while (opcao != 0);
+    }
+
+    private static void AdicionarMusicaPlaylist(Playlist playlist)
+    {
+        Console.WriteLine("--- Adicionar Música do Catálogo à Playlist ---");
+        Console.Write("Título: ");
+        string titulo = Console.ReadLine();
+        Console.Write("Artista: ");
+        string artista = Console.ReadLine();
+
+        Musica musica = RealizarBusca(catalogo, titulo, artista);
+
+        if (musica != null)
+        {
+            playlist.AdicionarMusica(musica);
+            Logger.Registrar($"Música adicionada à playlist '{playlist.Nome}': {musica.Titulo} - {musica.Artista}");
+            Console.WriteLine("Música adicionada à playlist.");
+        }
+    }
+
+    private static void RemoverMusicaPlaylist(Playlist playlist)
+    {
+        Console.WriteLine("--- Remover Música da Playlist ---");
+        Console.Write("Título: ");
+        string titulo = Console.ReadLine();
+        Console.Write("Artista: ");
+        string artista = Console.ReadLine();
+
+        bool removida = playlist.RemoverMusica(titulo, artista);
+
+        if (removida)
+        {
+            Logger.Registrar($"Música removida da playlist '{playlist.Nome}': {titulo} - {artista}");
+            Console.WriteLine("Música removida da playlist.");
+        }
+        else
+        {
+            Console.WriteLine("Música não encontrada nesta playlist.");
+        }
+    }
+
+    private static void EnviarPlaylistParaFila(Playlist playlist)
+    {
+        NoDuplo atual = playlist.Musicas.Primeiro;
+        int count = 0;
+
+        while (atual != null)
+        {
+            fila.AdicionarMusica(atual.Dados);
+            atual = atual.Proximo;
+            count++;
+        }
+
+        Logger.Registrar($"Playlist '{playlist.Nome}' ({count} músicas) enviada para a fila de reprodução.");
+        Console.WriteLine($"\nA playlist '{playlist.Nome}' ({count} músicas) foi adicionada ao final da fila.");
+    }
+
+    private static void MenuReproducao()
+    {
+        int opcao;
+        do
+        {
+            Console.Clear();
+            ExibirCabecalho();
+
+            Console.WriteLine("------------- CONTROLE DE REPRODUÇÃO -------------");
+            Console.WriteLine("0 - Voltar");
+            Console.WriteLine("1 - Tocar Próxima Música");
+            Console.WriteLine("2 - Voltar Música ");
+            Console.WriteLine("3 - Exibir Fila e Histórico");
+            Console.WriteLine("--------------------------------------------------");
+            Console.Write("\nEscolha uma opção: ");
+
+            if (!int.TryParse(Console.ReadLine(), out opcao))
+                opcao = -1;
+
+            Console.Clear();
+            ExibirCabecalho();
+
+            switch (opcao)
+            {
+                case 1:
+                    TocarProxima();
+                    Pausa();
+                    break;
+                case 2:
+                    VoltarMusica();
+                    Pausa();
+                    break;
+                case 3:
+                    fila.ExibirFila();
+                    historico.ExibirHistorico();
+                    Pausa();
+                    break;
+            }
+
+        } while (opcao != 0);
+    }
+
+    private static void TocarProxima()
+    {
+        Musica proxima = fila.ProximaMusica();
+
+        if (proxima != null)
+        {
+            if (musicaAtual != null)
+            {
+                historico.Adicionar(musicaAtual);
+            }
+
+            musicaAtual = proxima;
+            Console.WriteLine($"\nTOCANDO AGORA: {musicaAtual.Titulo} - {musicaAtual.Artista} ({musicaAtual.DuracaoFormatada})");
+            Logger.Registrar($"Música tocada: {musicaAtual.Titulo} - {musicaAtual.Artista}");
+        }
+        else
+        {
+            Console.WriteLine("\nFila de reprodução vazia. Nada para tocar.");
+            musicaAtual = null;
+        }
+    }
+
+    private static void VoltarMusica()
+    {
+        Musica anterior = historico.Voltar();
+
+        if (anterior != null)
+        {
+            if (musicaAtual != null)
+            {
+                fila.InsertInicio(musicaAtual);
+            }
+
+            musicaAtual = anterior;
+            Console.WriteLine($"\nVOLTANDO: {musicaAtual.Titulo} - {musicaAtual.Artista} ({musicaAtual.DuracaoFormatada})");
+            Logger.Registrar($"Música voltou (Histórico -> Fila): {musicaAtual.Titulo}");
+
+        }
+        else
+        {
+            Console.WriteLine("\nHistórico de reprodução vazio. Não há como voltar.");
+        }
+    }
+
+    private static void MenuBuscaPorGenero()
+    {
+        Console.WriteLine("--- Busca por Gênero ---");
+        Console.Write("Digite o Gênero para buscar: ");
+        string genero = Console.ReadLine().Trim();
+
+        Logger.Registrar($"Busca por Gênero: {genero}");
+
+        List<Musica> musicasDoGenero = indiceGeneros.BuscarGenero(genero);
+
+        if (musicasDoGenero != null && musicasDoGenero.Any())
+        {
+            musicasDoGenero = musicasDoGenero.OrderBy(m => m.Titulo).ToList();
+            Console.WriteLine("\n Resultado ordenado por Título.");
+
+            Console.WriteLine($"\n--- RESULTADO DA BUSCA: {genero} ({musicasDoGenero.Count} Músicas) ---");
+            foreach (var musica in musicasDoGenero)
+            {
+                Console.WriteLine($"{musica.Titulo,-35} | {musica.Artista,-25} | {musica.DuracaoFormatada}");
+            }
+            Console.WriteLine("--------------------------------------------------------------------");
+
+            Console.Write("Deseja adicionar todas à Fila? (S/N): ");
+            if (Console.ReadLine().Trim().ToUpper() == "S")
+            {
+                foreach (var musica in musicasDoGenero)
+                {
+                    fila.AdicionarMusica(musica);
+                }
+                Logger.Registrar($"Todas as {musicasDoGenero.Count} músicas de {genero} adicionadas à Fila.");
+                Console.WriteLine($"\nTodas as músicas de {genero} adicionadas à fila.");
+            }
+        }
+        else
+        {
+            Console.WriteLine($"\nNenhuma música encontrada para o gênero '{genero}'.");
+        }
+
+        Pausa();
+    }
+
+    private static void Pausa()
+    {
+        Console.Write("\nPressione ENTER para continuar...");
+        Console.ReadLine();
     }
 }

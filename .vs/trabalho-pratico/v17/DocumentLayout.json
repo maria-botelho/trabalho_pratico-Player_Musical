@@ -1,0 +1,241 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|c:\\users\\maria\\onedrive\\documentos\\duda puc\\aed\\trabalho-pratico\\arvoregenero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|solutionrelative:arvoregenero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\playlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|solutionrelative:playlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\ordenacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|solutionrelative:ordenacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\nomusica.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|solutionrelative:nomusica.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\noduplo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|solutionrelative:noduplo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\noarvoregenero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|solutionrelative:noarvoregenero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|c:\\users\\maria\\onedrive\\documentos\\duda puc\\aed\\trabalho-pratico\\musica.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|solutionrelative:musica.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|c:\\users\\maria\\onedrive\\documentos\\duda puc\\aed\\trabalho-pratico\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|solutionrelative:logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|c:\\users\\maria\\onedrive\\documentos\\duda puc\\aed\\trabalho-pratico\\listaduplamenteencadeada.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|solutionrelative:listaduplamenteencadeada.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\leitordedados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|solutionrelative:leitordedados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\historicoreproducao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|solutionrelative:historicoreproducao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\filareproducao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|solutionrelative:filareproducao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|c:\\users\\maria\\onedrive\\documentos\\duda puc\\aed\\trabalho-pratico\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7061CE63-F6C2-422B-9117-F53842ACA255}|trabalho-pratico.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Logger.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\Logger.cs",
+              "RelativeDocumentMoniker": "Logger.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\Logger.cs",
+              "RelativeToolTip": "Logger.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T16:29:12.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Musica.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\Musica.cs",
+              "RelativeDocumentMoniker": "Musica.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\Musica.cs",
+              "RelativeToolTip": "Musica.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA0wCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T16:29:14.832Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NoArvoreGenero.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\NoArvoreGenero.cs",
+              "RelativeDocumentMoniker": "NoArvoreGenero.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\NoArvoreGenero.cs",
+              "RelativeToolTip": "NoArvoreGenero.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T11:23:39.728Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NoDuplo.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\NoDuplo.cs",
+              "RelativeDocumentMoniker": "NoDuplo.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\NoDuplo.cs",
+              "RelativeToolTip": "NoDuplo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T11:34:32.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NoMusica.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\NoMusica.cs",
+              "RelativeDocumentMoniker": "NoMusica.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\NoMusica.cs",
+              "RelativeToolTip": "NoMusica.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T11:35:06.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Ordenacao.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\Ordenacao.cs",
+              "RelativeDocumentMoniker": "Ordenacao.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\Ordenacao.cs",
+              "RelativeToolTip": "Ordenacao.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAqwFQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T11:36:35.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Playlist.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\Playlist.cs",
+              "RelativeDocumentMoniker": "Playlist.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\Playlist.cs",
+              "RelativeToolTip": "Playlist.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA2wBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T11:37:24.046Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ArvoreGenero.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\ArvoreGenero.cs",
+              "RelativeDocumentMoniker": "ArvoreGenero.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\ArvoreGenero.cs",
+              "RelativeToolTip": "ArvoreGenero.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAYwCYAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T16:27:29.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ListaDuplamenteEncadeada.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\ListaDuplamenteEncadeada.cs",
+              "RelativeDocumentMoniker": "ListaDuplamenteEncadeada.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\ListaDuplamenteEncadeada.cs",
+              "RelativeToolTip": "ListaDuplamenteEncadeada.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAmwGMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T16:29:08.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LeitorDeDados.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\LeitorDeDados.cs",
+              "RelativeDocumentMoniker": "LeitorDeDados.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\LeitorDeDados.cs",
+              "RelativeToolTip": "LeitorDeDados.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAuwEAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T11:29:34.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "HistoricoReproducao.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\HistoricoReproducao.cs",
+              "RelativeDocumentMoniker": "HistoricoReproducao.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\HistoricoReproducao.cs",
+              "RelativeToolTip": "HistoricoReproducao.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAmwFAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T11:28:22.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "FilaReproducao.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\FilaReproducao.cs",
+              "RelativeDocumentMoniker": "FilaReproducao.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\FilaReproducao.cs",
+              "RelativeToolTip": "FilaReproducao.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAmwGcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T11:25:21.934Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Duda PUC\\AED\\trabalho-pratico\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAGQCAAAAAAAAAAAqwIUCAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T16:30:45.429Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
